@@ -35,6 +35,83 @@ from pyworkflow.protocol.params import PointerParam, BooleanParam, EnumParam
 
 class ProtBioinformaticsPubChemSearch(EMProtocol):
     """Add the best batching entry from Pubchem https://pubchem.ncbi.nlm.nih.gov/"""
+
+    """
+        Retrieve and annotate small molecules with PubChem information
+        using chemical identifiers derived from molecular structure files.
+        The protocol queries the PubChem database, identifies matching
+        compounds through SMILES representations, and enriches molecular
+        entries with standardized PubChem annotations for downstream
+        cheminformatics and bioinformatics workflows.
+
+        AI Generated:
+
+        PubChem Search (ProtBioinformaticsPubChemSearch) — User Manual
+            Overview
+
+            The PubChem Search protocol is designed to associate small
+            molecules with their corresponding PubChem compound entries.
+            Its primary purpose is to enrich molecular datasets with
+            standardized chemical annotations obtained directly from the
+            PubChem repository.
+
+            In practical cheminformatics and structural biology workflows,
+            this protocol is especially useful for identifying compounds,
+            validating molecular annotations, and connecting locally stored
+            molecules with publicly available chemical information. By
+            integrating PubChem metadata into Scipion workflows, the
+            protocol facilitates interoperability between molecular
+            datasets and external bioinformatics resources.
+
+            Inputs and General Workflow
+
+            The protocol requires a SetOfSmallMolecules object containing
+            molecular structure files. During execution, each molecule is
+            analyzed individually and its SMILES representation is used to
+            query the PubChem REST API.
+
+            When a matching compound is identified, the protocol retrieves
+            the associated PubChem Compound ID (CID) together with the
+            compound name and stores this information locally for reuse in
+            subsequent executions. This caching mechanism reduces repeated
+            network requests and improves workflow reproducibility.
+
+            Compound Annotation and Metadata Retrieval
+
+            For each successfully matched molecule, the protocol creates an
+            updated molecular entry enriched with PubChem annotations. The
+            retrieved metadata includes the compound name and a direct URL
+            linking to the corresponding PubChem entry.
+
+            From a biological and chemical perspective, this functionality
+            is valuable for compound identification, ligand annotation,
+            molecular cataloging, and integration with external chemical
+            databases. The protocol simplifies the connection between local
+            molecular structures and globally recognized chemical
+            repositories.
+
+            Outputs and Interpretation
+
+            The protocol produces an updated set of small molecules where
+            each entry contains additional PubChem annotations when a valid
+            match is found. Molecules without successful matches are still
+            preserved in the output dataset, ensuring dataset consistency.
+
+            These outputs can subsequently be used in molecular screening,
+            ligand analysis, annotation workflows, or integration with
+            external cheminformatics pipelines requiring PubChem
+            identifiers and references.
+
+            Final Perspective
+
+            The PubChem Search protocol provides an efficient mechanism for
+            connecting molecular structure datasets with standardized
+            chemical information available in PubChem. By automatically
+            retrieving compound identifiers and annotations, the protocol
+            supports biologically meaningful molecular interpretation and
+            improves interoperability across bioinformatics and
+            cheminformatics workflows.
+        """
     _label = 'PubChem'
 
     def _defineParams(self, form):

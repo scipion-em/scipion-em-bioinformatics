@@ -33,6 +33,130 @@ from pyworkflow.protocol.params import PointerParam, EnumParam, StringParam, Int
 
 class ProtBioinformaticsListOperate(EMProtocol):
     """Filter a set by a column value or keep just a few columns"""
+
+    """
+        Perform filtering, sorting, counting, intersection, and column
+        selection operations on Scipion metadata sets. The protocol
+        provides a flexible framework for manipulating EM-related
+        datasets according to user-defined criteria and attribute-based
+        conditions.
+
+        AI Generated:
+
+        Operate Set (ProtBioinformaticsListOperate) — User Manual
+            Overview
+
+            The Operate Set protocol allows users to manipulate metadata
+            collections stored in Scipion EM sets through a variety of
+            operations such as filtering, sorting, selecting columns,
+            identifying unique entries, counting occurrences, or finding
+            intersections between datasets. Its main purpose is to provide
+            a practical and flexible mechanism for reorganizing and refining
+            metadata during cryo-EM and bioinformatics workflows.
+
+            In practical data analysis pipelines, metadata operations are
+            essential for selecting biologically relevant subsets,
+            simplifying large datasets, preparing data for downstream
+            analysis, or generating curated collections for visualization
+            and interpretation. The protocol focuses on attribute-based
+            manipulation while preserving compatibility with the original
+            Scipion object structure.
+
+            Inputs and General Workflow
+
+            The protocol requires an input EM set containing the metadata
+            entries to be processed. Depending on the selected operation,
+            users may additionally provide filtering conditions, numerical
+            thresholds, sorting directions, lists of columns to preserve,
+            or a second reference set for intersection analysis.
+
+            During execution, the protocol iterates through the entries
+            contained in the input set and applies the selected operation
+            directly to the object attributes. New output entries are then
+            generated while preserving the original object type and
+            metadata structure.
+
+            Filtering and Attribute-Based Selection
+
+            One of the central functionalities of the protocol is metadata
+            filtering based on attribute values. Users can define numerical
+            or textual conditions including equality, inequality, interval
+            comparisons, substring matching, and prefix or suffix searches.
+            This enables efficient extraction of biologically meaningful
+            subsets such as particles above a confidence threshold,
+            structures containing specific annotations, or entries matching
+            experimental conditions.
+
+            From a practical perspective, filtering operations are useful
+            for quality control, dataset refinement, and preparation of
+            curated subsets prior to structural interpretation or machine
+            learning analysis. Careful selection of filter conditions is
+            important to avoid excluding biologically relevant entries.
+
+            Dataset Reduction and Structural Organization
+
+            The protocol also supports operations aimed at simplifying or
+            reorganizing metadata collections. Users may keep only selected
+            columns, generate unique entries according to a chosen
+            attribute, or sort datasets in ascending or descending order.
+            Additional operations allow extraction of the highest or lowest
+            scoring entries based on absolute counts or percentiles.
+
+            These functionalities are particularly useful when handling
+            large cryo-EM datasets where reducing redundancy, prioritizing
+            top-ranked results, or reorganizing metadata improves workflow
+            efficiency and interpretability.
+
+            Counting and Intersection Analysis
+
+            The protocol includes counting operations that determine how
+            many times specific attribute values appear within a dataset.
+            This allows users to identify repeated classifications,
+            frequently occurring annotations, or dominant structural
+            categories within large collections.
+
+            Intersection analysis enables comparison between two metadata
+            sets by preserving only entries whose identifiers are shared
+            between datasets. This functionality is useful for cross-study
+            validation, consensus analysis, or integration of independent
+            computational workflows.
+
+            Outputs and Interpretation
+
+            After execution, the protocol generates a new EM set containing
+            the processed metadata entries. The output preserves the
+            original object structure while reflecting the selected
+            transformations or filtering criteria.
+
+            Depending on the operation performed, the resulting dataset may
+            represent a refined subset, a reordered collection, a reduced
+            metadata representation, or an annotated set containing
+            additional counting information. The interpretation of the
+            output therefore depends directly on the selected operation and
+            the biological context of the original data.
+
+            Practical Recommendations
+
+            The protocol is especially useful when preparing datasets for
+            downstream structural analysis, machine learning workflows,
+            statistical evaluation, or publication-ready curation. Before
+            applying restrictive filters or percentile-based selections, it
+            is advisable to verify the consistency and biological meaning
+            of the selected metadata attributes.
+
+            In large-scale cryo-EM workflows, combining filtering,
+            uniqueness detection, sorting, and intersection operations can
+            substantially improve dataset organization and reproducibility.
+
+            Final Perspective
+
+            The Operate Set protocol provides a versatile framework for
+            metadata manipulation and dataset refinement within the
+            Scipion ecosystem. By enabling flexible attribute-based
+            operations on EM sets, the protocol facilitates data curation,
+            interoperability, and biologically meaningful analysis across
+            structural biology workflows.
+        """
     _label = 'operate set'
 
     def _defineParams(self, form):

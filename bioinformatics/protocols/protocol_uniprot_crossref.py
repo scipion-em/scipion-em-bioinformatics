@@ -36,6 +36,82 @@ from bioinformatics.objects import DatabaseID, SetOfDatabaseID
 
 class ProtBioinformaticsUniprotCrossRef(EMProtocol):
     """Extract cross references from uniprot"""
+
+    """
+        Extract and organize biological cross-references associated with
+        UniProt entries. The protocol queries UniProt XML records and
+        retrieves linked structural, functional, sequence, or family-domain
+        annotations to facilitate integrated bioinformatics and structural
+        biology analyses.
+
+        AI Generated:
+
+        UniProt Cross References (ProtBioinformaticsUniprotCrossRef) — User Manual
+            Overview
+
+            The UniProt Cross References protocol is designed to retrieve
+            external database annotations linked to UniProt protein entries.
+            Its primary objective is to connect protein sequence identifiers
+            with complementary biological resources such as structural
+            databases, nucleotide sequence repositories, Gene Ontology
+            annotations, and protein family classifications.
+
+            In practical bioinformatics workflows, this protocol is useful
+            when exploring structural coverage of proteins, identifying
+            associated RNA or nucleotide records, studying functional
+            annotations, or analyzing conserved domains and superfamily
+            relationships across proteins.
+
+            Inputs and General Workflow
+
+            The protocol requires a set of database identifiers containing
+            UniProt accession codes. During execution, the protocol queries
+            the UniProt XML repository for each entry and parses the
+            associated cross-reference annotations.
+
+            Depending on the selected extraction mode, the protocol retrieves
+            linked Protein Data Bank structures, ENA nucleotide sequence
+            entries, Gene Ontology annotations, or protein family and domain
+            classifications from resources such as InterPro, Pfam, HAMAP,
+            Gene3D, and SUPFAM.
+
+            Cross-Reference Extraction and Annotation
+
+            For structural extraction workflows, the protocol identifies
+            associated PDB entries and generates direct links to the RCSB
+            Protein Data Bank repository. When nucleotide sequence extraction
+            is selected, the protocol retrieves ENA identifiers together
+            with their annotated molecule types.
+
+            Functional annotation workflows retrieve Gene Ontology terms and
+            their corresponding identifiers, enabling integration with
+            biological process, molecular function, and cellular component
+            analyses. For family and domain exploration, the protocol
+            extracts superfamily identifiers, family names, and direct links
+            to the corresponding external classification resources.
+
+            Outputs and Interpretation
+
+            The protocol produces a SetOfDatabaseID object containing the
+            extracted cross-references and their associated annotations.
+            Each output entry preserves the relationship with the original
+            UniProt identifier while enriching it with external biological
+            information.
+
+            These outputs can subsequently be integrated into structural
+            annotation pipelines, functional analyses, protein family
+            studies, comparative genomics workflows, or multi-database
+            bioinformatics investigations.
+
+            Final Perspective
+
+            The UniProt Cross References protocol provides an efficient
+            bridge between UniProt protein entries and multiple biological
+            databases. By automatically retrieving and organizing linked
+            annotations from structural, functional, and family-domain
+            resources, the protocol supports biologically meaningful
+            integration of heterogeneous bioinformatics information.
+        """
     _label = 'uniprot crossref'
 
     def _defineParams(self, form):

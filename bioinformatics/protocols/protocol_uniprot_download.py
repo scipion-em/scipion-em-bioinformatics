@@ -36,6 +36,79 @@ from bioinformatics.objects import DatabaseID, SetOfDatabaseID, ProteinSequenceF
 
 class ProtBioinformaticsUniprotDownload(EMProtocol):
     """Download the Fasta files of a set of uniprotId's"""
+
+    """
+        Download and organize protein FASTA sequences associated with
+        UniProt identifiers. The protocol retrieves sequence files from
+        the UniProt repository and generates both individual and combined
+        sequence datasets for downstream bioinformatics analyses.
+
+        AI Generated:
+
+        UniProt Sequence Download (ProtBioinformaticsUniprotDownload) — User Manual
+            Overview
+
+            The UniProt Sequence Download protocol is designed to retrieve
+            protein FASTA sequences directly from the UniProt database using
+            a collection of UniProt accession identifiers. Its primary goal
+            is to automate sequence acquisition and integrate protein
+            sequence information into Scipion-based bioinformatics and
+            structural biology workflows.
+
+            In practical applications, this protocol is commonly used when
+            preparing datasets for sequence alignment, comparative genomics,
+            homology modeling, structural prediction, or functional
+            annotation analyses. By automatically downloading and organizing
+            sequence information, the protocol simplifies large-scale
+            sequence management tasks.
+
+            Inputs and General Workflow
+
+            The protocol requires a set of database identifiers containing
+            UniProt accession codes. During execution, each UniProt entry is
+            processed independently, and the corresponding FASTA sequence is
+            retrieved from the UniProt online repository.
+
+            Downloaded sequences are stored locally as individual FASTA
+            files. The protocol also tracks sequence metadata, including the
+            local file location and the total protein sequence length for
+            each retrieved entry.
+
+            Sequence Retrieval and Organization
+
+            For each UniProt identifier, the protocol accesses the UniProt
+            FASTA endpoint and attempts to download the associated protein
+            sequence. To improve robustness against temporary network or
+            server interruptions, multiple retrieval attempts are performed
+            automatically.
+
+            Successfully downloaded FASTA files are integrated into the
+            output dataset and annotated with their corresponding sequence
+            lengths. In addition, all retrieved sequences are merged into a
+            single consolidated FASTA file containing the complete sequence
+            collection generated during the execution.
+
+            Outputs and Interpretation
+
+            The protocol produces an updated SetOfDatabaseID object enriched
+            with sequence-related metadata, including references to the
+            downloaded FASTA files and their associated protein lengths.
+
+            Additionally, a ProteinSequenceFile object is generated,
+            containing a combined FASTA file with all retrieved protein
+            sequences. This consolidated dataset can be directly used in
+            downstream sequence-based workflows, including alignments,
+            database searches, structural modeling, or functional analyses.
+
+            Final Perspective
+
+            The UniProt Sequence Download protocol provides an efficient and
+            automated mechanism for integrating UniProt protein sequences
+            into bioinformatics workflows. By organizing both individual and
+            combined FASTA datasets together with sequence metadata, the
+            protocol facilitates scalable and biologically meaningful
+            sequence analysis pipelines.
+        """
     _label = 'uniprot download'
 
     def _defineParams(self, form):

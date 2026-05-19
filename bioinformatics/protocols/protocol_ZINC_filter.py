@@ -36,6 +36,86 @@ from pyworkflow.protocol.params import PointerParam, BooleanParam, EnumParam
 class ProtBioinformaticsZINCFilter(EMProtocol):
     """Filter a set of small molecules by being in all selected catalogs of ZINC.
        See https://zinc15.docking.org/substances/subsets/"""
+
+    """
+        Filter and classify small molecules according to their membership
+        in selected ZINC database catalogs. The protocol evaluates ZINC
+        annotations associated with each compound and retains or removes
+        molecules depending on user-defined catalog criteria.
+
+        AI Generated:
+
+        ZINC Catalog Filter (ProtBioinformaticsZINCFilter) — User Manual
+            Overview
+
+            The ZINC Catalog Filter protocol is designed to analyze and
+            filter collections of small molecules using catalog annotations
+            available in the ZINC database. Its primary purpose is to
+            facilitate the selection or exclusion of compounds according to
+            their commercial availability or database classification.
+
+            In practical cheminformatics and virtual screening workflows,
+            this protocol is especially useful for refining compound
+            libraries before docking, molecular modeling, or drug discovery
+            analyses. By separating purchasable compounds, screening agents,
+            or restricted molecules, the protocol helps generate biologically
+            and experimentally relevant datasets.
+
+            Inputs and General Workflow
+
+            The protocol requires a set of small molecules whose filenames
+            contain valid ZINC identifiers. During execution, each compound
+            is individually queried against the ZINC online repository to
+            retrieve associated catalog annotations and descriptive
+            information.
+
+            Depending on the selected filtering mode, compounds can either
+            be removed when they belong to specific catalogs or removed when
+            they do not belong to those catalogs. The filtering process
+            supports categories such as “not for sale”, “agent”, and
+            “for sale”, enabling flexible dataset refinement according to
+            experimental or commercial requirements.
+
+            Compound Annotation and Filtering
+
+            For each molecule, the protocol accesses the corresponding ZINC
+            substance page and parses the catalog annotations associated
+            with the compound. The retrieved information includes the ZINC
+            descriptive title together with the catalog memberships detected
+            within the database entry.
+
+            To improve efficiency and avoid repeated online requests, the
+            protocol stores retrieved annotations locally. Cached results
+            are reused in subsequent executions whenever the same ZINC entry
+            is processed again.
+
+            Molecules satisfying the selected filtering conditions are copied
+            into the output dataset together with the retrieved ZINC title
+            annotation. Compounds failing the filtering criteria are excluded
+            from the final collection.
+
+            Outputs and Interpretation
+
+            The protocol produces a filtered SetOfSmallMolecules object
+            containing only the compounds that satisfy the selected ZINC
+            catalog criteria. Each retained molecule preserves its original
+            metadata while incorporating additional ZINC annotation
+            information.
+
+            These filtered datasets can subsequently be integrated into
+            molecular docking pipelines, virtual screening studies,
+            compound prioritization workflows, or bioactive molecule
+            selection analyses.
+
+            Final Perspective
+
+            The ZINC Catalog Filter protocol provides an automated mechanism
+            for refining small-molecule collections using biologically and
+            experimentally meaningful ZINC classifications. By integrating
+            online catalog annotations with customizable filtering criteria,
+            the protocol supports efficient preparation of curated compound
+            libraries for cheminformatics and drug discovery workflows.
+        """
     _label = 'ZINC filter'
 
     def _defineParams(self, form):

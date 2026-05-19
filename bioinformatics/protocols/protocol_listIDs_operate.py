@@ -35,6 +35,120 @@ from bioinformatics.objects import DatabaseID, SetOfDatabaseID
 
 class ProtBioinformaticsListIDOperate(EMProtocol):
     """This protocol will remove all duplicated entries using the DbID as key"""
+
+    """
+        Perform logical and attribute-based operations on lists of database
+        identifiers stored in Scipion metadata collections. The protocol
+        enables manipulation, filtering, merging, and restructuring of
+        database identifier sets while preserving compatibility with
+        bioinformatics and structural biology workflows.
+
+        AI Generated:
+
+        Operate ID List (ProtBioinformaticsListIDOperate) — User Manual
+            Overview
+
+            The Operate ID List protocol provides a flexible framework for
+            manipulating collections of database identifiers within the
+            Scipion environment. Its main purpose is to facilitate the
+            organization, comparison, filtering, and restructuring of
+            metadata entries associated with external biological databases
+            or structural repositories.
+
+            In practical bioinformatics and cryo-EM workflows, database
+            identifier manipulation is frequently required when combining
+            results from multiple sources, removing duplicated entries,
+            selecting biologically relevant subsets, or preparing datasets
+            for downstream structural analysis. The protocol focuses on
+            operations centered around DbID values while preserving the
+            associated metadata structure.
+
+            Inputs and General Workflow
+
+            The protocol requires one or more input collections containing
+            database identifiers and associated metadata attributes.
+            Depending on the selected operation, users may provide a second
+            dataset for comparison, define filtering conditions, specify
+            columns to preserve, or assign new database identifiers and
+            database labels.
+
+            During execution, the protocol iterates through the provided
+            entries and applies the selected operation directly to the
+            identifier structure and metadata attributes. New entries are
+            generated dynamically while maintaining compatibility with the
+            original Scipion database object format.
+
+            Identifier Management and Dataset Operations
+
+            The protocol supports several logical operations designed to
+            simplify and reorganize database identifier collections.
+            Duplicate removal allows generation of unique identifier sets,
+            while union and intersection operations enable comparison and
+            integration of multiple datasets originating from independent
+            workflows or external repositories.
+
+            Difference operations are useful for identifying entries
+            present in one dataset but absent in another, facilitating
+            comparative studies and metadata curation. These operations are
+            particularly relevant in large-scale structural biology
+            pipelines where identifiers may originate from heterogeneous
+            experimental or computational sources.
+
+            Metadata Transformation and Filtering
+
+            In addition to identifier-based operations, the protocol allows
+            modification of database labels and DbID values using existing
+            metadata attributes. This functionality enables harmonization
+            of datasets originating from different repositories or naming
+            conventions.
+
+            The protocol also supports selective preservation of metadata
+            columns and attribute-based filtering using numerical or text
+            comparisons. Users may apply equality, inequality, substring,
+            prefix, or suffix conditions to refine datasets according to
+            biologically meaningful criteria.
+
+            From a practical perspective, these filtering capabilities are
+            useful for selecting curated subsets, removing irrelevant
+            entries, or preparing metadata collections for downstream
+            computational analysis and visualization.
+
+            Outputs and Interpretation
+
+            After execution, the protocol generates a new set of database
+            identifiers containing the processed entries and associated
+            metadata. Depending on the selected operation, the resulting
+            dataset may represent a merged collection, a refined subset, a
+            duplicate-free list, or a transformed identifier mapping.
+
+            Since the protocol preserves metadata relationships whenever
+            possible, the outputs remain suitable for integration into
+            broader Scipion bioinformatics and structural analysis
+            workflows.
+
+            Practical Recommendations
+
+            The protocol is particularly useful when integrating multiple
+            biological databases, curating identifier collections, or
+            comparing results generated by independent computational
+            pipelines. Before applying filtering or transformation
+            operations, it is advisable to verify the consistency of the
+            selected metadata attributes and identifier conventions.
+
+            In workflows involving large heterogeneous datasets, enabling
+            duplicate removal often improves dataset consistency and
+            downstream reproducibility.
+
+            Final Perspective
+
+            The Operate ID List protocol provides a practical and flexible
+            framework for database identifier management within Scipion.
+            By enabling logical set operations, metadata filtering, and
+            identifier transformation, the protocol facilitates
+            interoperability, dataset curation, and biologically meaningful
+            integration of external database information into structural
+            biology workflows.
+        """
     _label = 'operate ID list'
 
     def _defineParams(self, form):
