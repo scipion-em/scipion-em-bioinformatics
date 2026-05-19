@@ -36,6 +36,96 @@ from bioinformatics.objects import SetOfSmallMolecules, SmallMolecule
 class ProtBioinformaticsAutodock(EMProtocol):
     """Perform a docking experiment with autodock. See the help at
        http://autodock.scripps.edu/faqs-help/manual/autodock-4-2-user-guide/AutoDock4.2_UserGuide.pdf"""
+
+    """
+        Wrapper for AutoDock used to perform automated molecular docking
+        experiments between a receptor grid and a ligand library. The
+        protocol evaluates ligand binding poses, estimates docking scores,
+        and generates ranked molecular docking solutions for structural
+        bioinformatics and drug discovery workflows.
+
+        AI Generated:
+
+        AutoDock Docking (ProtBioinformaticsAutodock) — User Manual
+            Overview
+
+            The AutoDock Docking protocol performs molecular docking
+            simulations between a receptor and a library of small
+            molecules using AutoDock4. Its main purpose is to predict
+            ligand binding conformations, estimate interaction energies,
+            and identify potential binding candidates for structural
+            and pharmacological analysis.
+
+            In computational structural biology and drug discovery
+            workflows, docking experiments are commonly used to study
+            protein–ligand interactions, prioritize compounds for
+            experimental validation, and explore binding mechanisms
+            within active or regulatory sites. This protocol integrates
+            AutoDock tools together with grid-based scoring calculations
+            to automate large-scale docking analyses.
+
+            Inputs and General Workflow
+
+            The protocol requires a previously prepared AutoDock grid
+            representing the receptor environment and a library of
+            small molecules prepared in AutoDock-compatible format.
+            During execution, each ligand is docked independently
+            against the receptor grid.
+
+            The docking procedure combines a genetic algorithm with
+            local optimization using the Solis & Wets method in order
+            to efficiently explore ligand conformational space and
+            identify energetically favorable binding poses. Users can
+            control advanced parameters such as population size,
+            mutation and crossover rates, number of generations,
+            clustering tolerance, and local search behavior.
+
+            For every ligand, the protocol automatically prepares the
+            docking parameter files, generates affinity grids,
+            executes AutoDock calculations, and extracts the resulting
+            docking conformations and scoring statistics.
+
+            Outputs and Interpretation
+
+            After execution, the protocol produces ranked docking
+            solutions for all processed ligands together with the
+            corresponding docking scores and ligand efficiency values.
+            The best-energy pose for each ligand is also generated
+            as an individual structural output suitable for further
+            visualization and structural inspection.
+
+            The resulting scores can be used to compare ligand
+            binding affinity predictions, identify promising
+            candidates, or evaluate the structural compatibility
+            between ligands and receptor binding pockets. Since
+            docking scores are computational estimations, biological
+            interpretation should always consider complementary
+            experimental evidence.
+
+            Practical Recommendations
+
+            Reliable docking results strongly depend on the quality
+            of receptor preparation, ligand parameterization, and
+            grid definition. Carefully selecting the docking region
+            and using biologically meaningful receptor conformations
+            significantly improves prediction reliability.
+
+            Increasing the number of genetic algorithm runs and
+            evaluations may improve sampling quality for flexible
+            ligands or difficult binding sites, although at the
+            cost of longer execution times. Clustering tolerance
+            should also be adjusted carefully in order to avoid
+            merging structurally distinct docking solutions.
+
+            Final Perspective
+
+            The protocol provides an integrated framework for
+            automated molecular docking and ligand evaluation,
+            facilitating structural bioinformatics analyses,
+            virtual screening workflows, and protein–ligand
+            interaction studies within reproducible computational
+            environments.
+        """
     _label = 'autodock'
     _program = ""
 

@@ -120,6 +120,86 @@ class ProtBioinformaticsADTPrepare(EMProtocol):
 
 class ProtBioinformaticsADTPrepareReceptor(ProtBioinformaticsADTPrepare):
     """Prepare receptor using Autodocking Tools from MGL"""
+
+    """
+        Prepare receptor structures for molecular docking workflows using
+        AutoDock Tools (ADT). The protocol converts atomic structures into
+        docking-compatible PDBQT files while applying optional structural
+        repairs, hydrogen addition, charge assignment, and cleanup
+        operations required for AutoDock-based simulations.
+
+        AI Generated:
+
+        ADT Receptor Preparation (ProtBioinformaticsADTPrepareReceptor) — User Manual
+            Overview
+
+            The ADT Receptor Preparation protocol prepares macromolecular
+            receptor structures for molecular docking and virtual screening
+            workflows. Its primary objective is to transform experimentally
+            derived atomic structures into standardized PDBQT receptor
+            models compatible with AutoDock and related docking engines.
+
+            In practical structural biology and computational chemistry
+            workflows, receptor preparation is a critical preprocessing
+            step because docking accuracy strongly depends on correct atom
+            typing, charge assignment, hydrogen placement, and structural
+            consistency. The protocol integrates AutoDock Tools utilities
+            within the Scipion framework to automate these preparation
+            procedures.
+
+            Inputs and General Workflow
+
+            The protocol accepts an atomic structure in formats commonly
+            used in structural biology, including PDB, MOL2, PDBQT, PDBQ,
+            PDBQS, and CIF. When CIF structures are provided, they are
+            automatically converted into PDB format before preparation.
+
+            During execution, the protocol invokes AutoDock Tools receptor
+            preparation utilities to generate a docking-ready PDBQT file.
+            Optional repair operations may include bond reconstruction,
+            hydrogen addition, or validation of existing hydrogens,
+            depending on the selected configuration.
+
+            Structural Cleanup and Charge Handling
+
+            The protocol supports multiple cleanup operations designed to
+            improve receptor quality and compatibility with docking
+            algorithms. These operations include removal of non-polar
+            hydrogens, lone pairs, water molecules, and optionally
+            non-standard residues or chains.
+
+            Charge management can be performed through automatic Gasteiger
+            charge assignment or by preserving selected atomic charges from
+            the original structure. This flexibility is particularly useful
+            for metalloproteins or receptors containing chemically relevant
+            cofactors where preserving experimental charge information may
+            be biologically important.
+
+            Outputs and Interpretation
+
+            The protocol produces a prepared receptor structure in PDBQT
+            format suitable for downstream docking, virtual screening, or
+            binding-site analysis workflows. The resulting structure
+            preserves the original receptor geometry while incorporating
+            the chemical modifications required by AutoDock-based tools.
+
+            Practical Recommendations
+
+            In routine docking applications, hydrogen addition and water
+            removal are commonly recommended to improve compatibility with
+            scoring functions and docking engines. When preparing
+            metalloproteins or structures containing ligands with unusual
+            chemistry, preserving selected atomic charges may improve
+            biological realism and docking stability.
+
+            Final Perspective
+
+            The ADT Receptor Preparation protocol provides a streamlined
+            and reproducible framework for generating docking-compatible
+            receptor structures. By automating essential preprocessing
+            tasks, the protocol facilitates integration between structural
+            biology data and molecular docking workflows within Scipion.
+        """
     _label = 'target preparation ADT'
     _program = ""
 

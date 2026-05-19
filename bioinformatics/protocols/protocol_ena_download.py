@@ -35,6 +35,63 @@ from bioinformatics.objects import DatabaseID, SetOfDatabaseID, NucleotideSequen
 
 class ProtBioinformaticsEnaDownload(EMProtocol):
     """Download the Fasta files of a set of enaId's"""
+
+    """
+        Download nucleotide FASTA sequences from the ENA database using
+        ENA identifiers associated with input database entries.
+
+        AI Generated:
+
+        ENA Sequence Download (ProtBioinformaticsEnaDownload) — User Manual
+            Overview
+
+            The ENA Sequence Download protocol retrieves nucleotide
+            sequences from the European Nucleotide Archive (ENA) using
+            ENA accession identifiers stored in a set of database entries.
+            Its main purpose is to automate sequence retrieval and
+            integrate nucleotide data into structural biology and
+            bioinformatics workflows.
+
+            In many biological studies, nucleotide sequences are required
+            for sequence comparison, annotation, evolutionary analysis,
+            or integrative modeling. This protocol simplifies the process
+            of obtaining ENA sequence data while maintaining the
+            association between downloaded sequences and their original
+            biological identifiers.
+
+            Inputs and Workflow
+
+            The protocol requires a set of database identifiers containing
+            valid ENA accession IDs. During execution, each identifier is
+            queried against the ENA repository through its public web
+            service interface.
+
+            For every valid entry, the corresponding FASTA sequence is
+            downloaded and stored locally. The protocol also calculates
+            sequence length information and associates it with each
+            retrieved entry. All successfully downloaded sequences are
+            additionally merged into a combined FASTA file for easier
+            downstream analysis.
+
+            Outputs and Interpretation
+
+            After execution, the protocol generates an updated set of
+            database entries enriched with sequence file references and
+            sequence metadata. A combined FASTA file containing all
+            retrieved nucleotide sequences is also produced.
+
+            These outputs can be directly used in downstream
+            bioinformatics applications such as sequence alignment,
+            annotation, phylogenetic analysis, or integrative structural
+            biology workflows.
+
+            Final Perspective
+
+            The protocol provides a practical and automated solution for
+            integrating ENA nucleotide sequence retrieval into biological
+            and bioinformatics pipelines, facilitating reproducible and
+            efficient sequence-based analyses.
+        """
     _label = 'ena download'
 
     def _defineParams(self, form):

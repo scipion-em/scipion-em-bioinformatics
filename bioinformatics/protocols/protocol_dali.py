@@ -36,6 +36,92 @@ from pyworkflow.protocol.params import (EnumParam, PointerParam, StringParam)
 class ProtBioinformaticsDali(EMProtocol):
     """Query Dali server (http://ekhidna2.biocenter.helsinki.fi/dali) with a structure.
     The server returns other structures that are structurally similar"""
+    """
+        Query structurally similar protein entries using the Dali server.
+
+        AI Generated:
+
+        Dali Structural Search (ProtBioinformaticsDali) — User Manual
+            Overview
+
+            The Dali Structural Search protocol allows users to compare an
+            atomic structure against the Dali structural database in order
+            to identify proteins with similar three-dimensional folds.
+            Its main purpose is to detect structural relationships that may
+            not be evident from sequence similarity alone.
+
+            In structural biology workflows, structural comparison is an
+            important strategy for identifying homologous proteins,
+            exploring evolutionary relationships, validating structural
+            models, or characterizing newly determined conformations.
+            The protocol integrates the Dali server to automatically submit
+            structural queries and retrieve biologically relevant matches.
+
+            Inputs and General Workflow
+
+            The protocol requires an atomic structure in PDB or CIF format
+            that will be used as the query model. During execution, the
+            structure is converted into PDB format and submitted to the
+            Dali server together with the selected search method and user
+            metadata.
+
+            The protocol supports different Dali search modes, including
+            standard structural searches and comparisons against filtered
+            structural subsets such as PDB25. Users may also define a job
+            title and an email address in order to track remote execution
+            and receive notification when the analysis is completed.
+
+            Structural Search Strategy
+
+            Dali performs structure-based comparisons by evaluating
+            similarities in residue contact patterns and global fold
+            organization. Unlike sequence-based methods, structural
+            alignment can reveal biologically meaningful relationships
+            between proteins that have diverged significantly at the
+            sequence level while still preserving a common architecture.
+
+            From a biological perspective, this type of analysis is useful
+            for identifying conserved folds, detecting distant homologs,
+            studying domain organization, or evaluating whether a predicted
+            model adopts a realistic structural arrangement.
+
+            Outputs and Interpretation
+
+            After execution, the protocol generates a set of structural
+            matches returned by the Dali server. Each entry includes
+            information such as PDB identifier, chain identifier,
+            structural similarity score, RMSD, alignment length, sequence
+            identity, and textual structural annotations.
+
+            The Dali Z-score provides an estimate of structural similarity,
+            where higher values indicate stronger structural relationships.
+            RMSD values describe the geometric agreement between aligned
+            regions, while alignment coverage and sequence identity help
+            contextualize the biological significance of the match.
+
+            Practical Recommendations
+
+            Structural searches are particularly valuable when analyzing
+            newly solved structures, predicted models, or assemblies with
+            uncertain functional annotation. High-quality input structures
+            generally produce more reliable structural matches and more
+            biologically meaningful interpretations.
+
+            When interpreting results, users should consider not only the
+            statistical scores but also the biological context of the
+            detected structures, including functional domains, oligomeric
+            state, and evolutionary conservation.
+
+            Final Perspective
+
+            The Dali Structural Search protocol provides a practical
+            framework for large-scale structural comparison and fold
+            recognition. By integrating automated Dali queries within
+            structural biology workflows, the protocol helps researchers
+            explore structural conservation, infer biological function,
+            and identify meaningful relationships between experimentally
+            determined or computationally predicted protein structures.
+        """
     methodsDict = {0: 'search', 1: 'pdb25'}
     _label = 'dali'
     _program = ""
